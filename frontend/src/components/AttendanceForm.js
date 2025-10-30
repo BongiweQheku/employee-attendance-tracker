@@ -65,8 +65,7 @@ const AttendanceForm = () => {
 
       console.log('Data being sent to backend:', submissionData);
 
-      const response = await axios.post('http://localhost:5000/api/attendance', submissionData);
-      
+      const response = await axios.post('/api/attendance', submissionData);
       console.log('Backend response:', response.data);
       
       setMessage('Attendance recorded successfully!');
