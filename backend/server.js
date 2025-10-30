@@ -11,7 +11,9 @@ app.use(cors());
 app.use(express.json());
 
 // Initialize SQLite Database
-const db = new sqlite3.Database('./attendance.db', (err) => {
+// Use different database paths for production vs development
+const dbPath = process.env.NODE_ENV === 'production' ? '/tmp/attendance.db' : './attendance.db';
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Error opening database:', err.message);
     } else {
