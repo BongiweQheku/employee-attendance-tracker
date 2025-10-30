@@ -4,6 +4,7 @@ import AttendanceForm from './components/AttendanceForm';
 import Dashboard from './components/Dashboard';
 import Navigation from './components/Navigation';
 import './App.css';
+import './index.css';
 
 function App() {
   return (

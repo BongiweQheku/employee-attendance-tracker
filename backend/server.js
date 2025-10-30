@@ -16,10 +16,6 @@ const db = new sqlite3.Database('./attendance.db', (err) => {
         console.error('Error opening database:', err.message);
     } else {
         console.log('Connected to SQLite database.');
-
-        // Import and use routes
-const attendanceRoutes = require('./routes/attendance');
-app.use('/api/attendance', attendanceRoutes);
         // Create table if it doesn't exist
         db.run(`CREATE TABLE IF NOT EXISTS attendance (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,14 +28,20 @@ app.use('/api/attendance', attendanceRoutes);
     }
 });
 
-// Basic route
+// Import routes
+const attendanceRoutes = require('./routes/attendance');
+
+// Use routes
+app.use('/api/attendance', attendanceRoutes);
+
+// Basic route - EMPLOYEE ATTENDANCE VERSION
 app.get('/', (req, res) => {
     res.json({ message: 'Employee Attendance API is running!' });
 });
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Employee Attendance Server running on http://localhost:${PORT}`);
 });
 
 module.exports = app;

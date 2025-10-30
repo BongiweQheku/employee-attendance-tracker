@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const { employeeName, employeeID, date, status } = req.body;
     
-    // Validation
+    // Basic validation
     if (!employeeName || !employeeID || !date || !status) {
         return res.status(400).json({ error: 'All fields are required' });
     }

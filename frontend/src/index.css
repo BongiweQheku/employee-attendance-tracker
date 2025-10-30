@@ -1,13 +1,96 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 210 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
+
+    /* Professional blue primary */
+    --primary: 204 70% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 204 70% 45%;
+
+    /* Dark navy for headers */
+    --secondary: 210 29% 24%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 10% 46%;
+
+    --accent: 210 20% 94%;
+    --accent-foreground: 210 20% 15%;
+
+    /* Success green */
+    --success: 145 63% 42%;
+    --success-foreground: 0 0% 100%;
+
+    /* Danger red */
+    --destructive: 4 90% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Info cyan */
+    --info: 188 78% 41%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 204 70% 53%;
+
+    --radius: 0.5rem;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.12);
+
+    /* Transitions */
+    --transition-smooth: all 0.2s ease-in-out;
+  }
+
+  .dark {
+    --background: 210 29% 24%;
+    --foreground: 210 20% 98%;
+
+    --card: 210 25% 20%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 210 25% 20%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 204 70% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 204 70% 60%;
+
+    --secondary: 210 20% 30%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 210 25% 22%;
+    --muted-foreground: 210 15% 65%;
+
+    --accent: 210 25% 28%;
+    --accent-foreground: 210 20% 98%;
+
+    --success: 145 63% 42%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 4 90% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --info: 188 78% 41%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 210 25% 30%;
+    --input: 210 25% 30%;
+    --ring: 204 70% 53%;
+  }
 }

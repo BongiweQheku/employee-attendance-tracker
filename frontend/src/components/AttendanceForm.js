@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
+
 const AttendanceForm = () => {
   const [formData, setFormData] = useState({
     employeeName: '',
     employeeID: '',
-    date: new Date().toISOString().split('T')[0], // Today's date
+    date: new Date().toISOString().split('T')[0],
     status: 'Present'
   });
   const [message, setMessage] = useState('');
@@ -51,7 +53,22 @@ const AttendanceForm = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/attendance', formData);
+      console.log('Form data before submission:', formData);
+      
+      // Ensure date is in correct format
+      const submissionData = {
+        employeeName: formData.employeeName.trim(),
+        employeeID: formData.employeeID.trim(),
+        date: formData.date, // Should already be YYYY-MM-DD from input type="date"
+        status: formData.status
+      };
+
+      console.log('Data being sent to backend:', submissionData);
+
+      const response = await axios.post('http://localhost:5000/api/attendance', submissionData);
+      
+      console.log('Backend response:', response.data);
+      
       setMessage('Attendance recorded successfully!');
       setFormData({
         employeeName: '',
@@ -60,8 +77,9 @@ const AttendanceForm = () => {
         status: 'Present'
       });
     } catch (error) {
-      setMessage('Error recording attendance. Please try again.');
-      console.error('Error:', error);
+      console.error('Full error object:', error);
+      console.error('Error response:', error.response);
+      setMessage(`Error: ${error.response?.data?.error || error.message}`);
     }
   };
 
@@ -85,6 +103,7 @@ const AttendanceForm = () => {
             name="employeeName"
             value={formData.employeeName}
             onChange={handleChange}
+            placeholder="Enter employee name"
           />
           {errors.employeeName && <div className="invalid-feedback">{errors.employeeName}</div>}
         </div>
@@ -98,6 +117,7 @@ const AttendanceForm = () => {
             name="employeeID"
             value={formData.employeeID}
             onChange={handleChange}
+            placeholder="Enter employee ID"
           />
           {errors.employeeID && <div className="invalid-feedback">{errors.employeeID}</div>}
         </div>
