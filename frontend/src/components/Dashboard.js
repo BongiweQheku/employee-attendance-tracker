@@ -14,7 +14,8 @@ const Dashboard = () => {
 
   const fetchAttendance = async () => {
     try {
-      const response =  await axios.get('/api/attendance');
+      const response = await axios.get('/api/attendance');
+      setAttendance(response.data.data); // FIXED: Set the attendance data
       setLoading(false);
     } catch (error) {
       setError('Error fetching attendance data');
@@ -26,7 +27,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this attendance record?')) {
       try {
-     await axios.delete(`/api/attendance/${id}`);
+        await axios.delete(`/api/attendance/${id}`);
         setAttendance(attendance.filter(item => item.id !== id));
       } catch (error) {
         console.error('Error deleting record:', error);
